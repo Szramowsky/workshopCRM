@@ -1,9 +1,6 @@
 package com.example.workshopCRM.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,8 +10,9 @@ import java.util.UUID;
 @Setter
 @Getter
 @Entity
-@Table(name = "Repairs")
+@Table(name = "Repair")
 public class Repair {
+    @Id
     private UUID uuid;
     @ManyToOne
     @JoinColumn(name = "car_uuid")

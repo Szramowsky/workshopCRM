@@ -1,16 +1,14 @@
 package com.example.workshopCRM.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
 
 @Entity
-@Table(name = "Cars")
+@Table(name = "Car")
 public class Car {
+    @Id
     private UUID uuid;
     @OneToOne
     @JoinColumn(name = "client_uuid")
