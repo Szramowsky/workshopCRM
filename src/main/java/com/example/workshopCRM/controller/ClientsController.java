@@ -18,7 +18,7 @@ public class ClientsController {
         this.clientRepo = clientRepo;
     }
 
-    @GetMapping("/addclient/")
+    @GetMapping("/addclient")
     public String addClient() {
 
         return "/newclient";

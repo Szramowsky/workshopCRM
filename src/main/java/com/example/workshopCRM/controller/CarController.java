@@ -1,10 +1,21 @@
 package com.example.workshopCRM.controller;
 
+import com.example.workshopCRM.model.Car;
+import com.example.workshopCRM.repository.CarRepo;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class CarController {
+
+    private CarRepo carRepo;
+
+    public CarController(CarRepo carRepo) {
+        this.carRepo = carRepo;
+    }
 
     @GetMapping("/addcar")
     public String addCar() {
@@ -13,8 +24,9 @@ public class CarController {
     }
 
     @GetMapping("/allcars")
-    public String allCars() {
-
+    public String allCars(Model model) {
+        List<Car> carList = carRepo.findAll();
+        model.addAttribute("carlist", carList);
         return "/allcars";
     }
 }
