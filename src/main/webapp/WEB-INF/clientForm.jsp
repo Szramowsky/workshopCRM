@@ -1,6 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <html>
 
 <form th:object="${client}" th:action="@{/submit}" method="post">
