@@ -3,13 +3,15 @@ package com.example.workshopCRM.controller;
 
 import com.example.workshopCRM.model.Client;
 import com.example.workshopCRM.repository.ClientRepo;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class ClientsController {
 
     private ClientRepo clientRepo;
@@ -19,9 +21,15 @@ public class ClientsController {
     }
 
     @GetMapping("/addclient")
-    public String addClient() {
+    public String addClient(Model model) {
+        model.addAttribute("client", new Client());
+        return "clientForm";
+    }
 
-        return "/newclient";
+    @PostMapping("/submit")
+    public String submitForm(@ModelAttribute Client client) {
+        clientRepo.save(client);
+        return "wynik";
     }
 
     @GetMapping("/allclients")

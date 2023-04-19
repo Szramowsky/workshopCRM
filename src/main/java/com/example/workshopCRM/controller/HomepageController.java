@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@Controller
 public class HomepageController {
 
     private CarRepo carRepo;
@@ -18,15 +18,10 @@ public class HomepageController {
         this.carRepo = carRepo;
     }
 
-    @GetMapping("/a")
+    @GetMapping("")
     public String test() {
-        return "working";
+        return "page/homepage";
     }
 
-    @GetMapping("")
-    public String homepage(Model model) {
-        List<Car> carList = carRepo.findAll();
-        model.addAttribute("carList", carList);
-        return "homepage";
-    }
+
 }
